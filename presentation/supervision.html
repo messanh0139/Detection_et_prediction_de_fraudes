@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .title {
+        color: #1A73E8;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .content {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .page-number {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        color: #666;
+      }
+      .accent {
+        color: #34A853;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="title">Système de supervision</div>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Composants supervisés</strong></p>
+            <ul class="list-disc pl-6">
+              <li>Data Lake (S3) : stockage, accès, erreurs</li>
+              <li>Data Warehouse (Snowflake) : performances des requêtes, utilisation des ressources</li>
+              <li>Machine Learning Platform (SageMaker) : état des modèles, performances de prédiction</li>
+              <li>Orchestration (Airflow) : état des DAGs, temps d'exécution</li>
+            </ul>
+            
+            <p class="mt-6 mb-4"><strong>Outils de supervision</strong></p>
+            <ul class="list-disc pl-6">
+              <li>CloudWatch : services AWS</li>
+              <li>Prometheus et Grafana : applications et infrastructures</li>
+              <li>Alertmanager : gestion des alertes</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="flex flex-col justify-center items-center">
+          <img src="/home/ubuntu/upload/search_images/yqoqnHNRgUq4.png" alt="Tableau de bord de supervision" style="max-height: 350px; width: auto;">
+          <p class="text-center mt-4 text-sm">Exemple de tableau de bord de supervision avec métriques clés</p>
+        </div>
+      </div>
+      
+      <div class="mt-6">
+        <p class="content"><strong class="accent">Avantages</strong> : Détection précoce des problèmes, optimisation des performances, réduction des temps d'arrêt, amélioration continue de l'infrastructure.</p>
+      </div>
+      
+      <div class="page-number">7</div>
+    </div>
+  </body>
+</html>
+

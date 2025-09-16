@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .title {
+        color: #1A73E8;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .content {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .page-number {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        color: #666;
+      }
+      .roadmap-item {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        color: white;
+      }
+      .roadmap-title {
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="title">Feuille de route d'exploitation</div>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="roadmap-item" style="background-color: #4285F4;">
+            <div class="roadmap-title">Q4 2025: Mise en production initiale</div>
+            <ul class="list-disc pl-6">
+              <li>Déploiement de l'infrastructure data sur le cloud</li>
+              <li>Mise en place du pipeline de traitement en temps réel</li>
+              <li>Déploiement du modèle de détection de fraude v1</li>
+              <li>Mise en place du système de supervision et d'alerting</li>
+            </ul>
+          </div>
+          
+          <div class="roadmap-item" style="background-color: #34A853;">
+            <div class="roadmap-title">Q1 2026: Amélioration continue</div>
+            <ul class="list-disc pl-6">
+              <li>Analyse des performances du modèle de détection</li>
+              <li>Ré-entraînement du modèle avec de nouvelles données</li>
+              <li>Optimisation des pipelines de traitement</li>
+              <li>Ajout de nouvelles sources de données</li>
+            </ul>
+          </div>
+          
+          <div class="roadmap-item" style="background-color: #FBBC05;">
+            <div class="roadmap-title">Q2 2026: Évolutivité et robustesse</div>
+            <ul class="list-disc pl-6">
+              <li>Tests de charge et de performance de l'infrastructure</li>
+              <li>Mise en place d'un plan de reprise d'activité</li>
+              <li>Renforcement de la sécurité de l'infrastructure</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div>
+          <div class="content mb-4">
+            <p><strong>Visualisation de la feuille de route</strong></p>
+          </div>
+          
+          <div style="height: 450px;">
+            <canvas id="roadmapChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <div class="page-number">8</div>
+    </div>
+    
+    <script>
+      // Graphique de la feuille de route
+      const ctx = document.getElementById('roadmapChart').getContext('2d');
+      const roadmapChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Déploiement infrastructure', 'Pipeline temps réel', 'Modèle ML v1', 'Supervision', 'Optimisation', 'Nouvelles sources', 'Tests de charge', 'Plan de reprise', 'Sécurité'],
+          datasets: [{
+            label: 'Q4 2025',
+            data: [100, 100, 100, 100, 0, 0, 0, 0, 0],
+            backgroundColor: '#4285F4'
+          }, {
+            label: 'Q1 2026',
+            data: [0, 0, 0, 0, 100, 100, 0, 0, 0],
+            backgroundColor: '#34A853'
+          }, {
+            label: 'Q2 2026',
+            data: [0, 0, 0, 0, 0, 0, 100, 100, 100],
+            backgroundColor: '#FBBC05'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Planification des activités par trimestre'
+            },
+            legend: {
+              position: 'bottom'
+            }
+          },
+          scales: {
+            x: {
+              stacked: true
+            },
+            y: {
+              stacked: true,
+              max: 100
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

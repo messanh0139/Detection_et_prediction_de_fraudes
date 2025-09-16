@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+
+cloud "Cloud Provider" {
+  node "Data Lake (S3)" as S3
+  node "Data Warehouse (Snowflake)" as Snowflake
+  node "Machine Learning Platform (SageMaker)" as SageMaker
+  node "Orchestration (Airflow)" as Airflow
+}
+
+actor "Data Source" as Source
+
+Source -> S3 : Raw Data (CSV)
+S3 -> Snowflake : Processed Data
+Snowflake -> SageMaker : Training Data
+SageMaker -> Snowflake : Predictions
+Airflow -> S3
+Airflow -> Snowflake
+Airflow -> SageMaker
+
+@enduml
+
+

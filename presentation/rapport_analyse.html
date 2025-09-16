@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .title {
+        color: #1A73E8;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .content {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .page-number {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        color: #666;
+      }
+      .chart-container {
+        height: 300px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="title">Rapport d'analyse</div>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Analyse des données de transactions</strong></p>
+            <ul class="list-disc pl-6">
+              <li>1 000 000 transactions analysées</li>
+              <li>8,7% des transactions sont frauduleuses</li>
+              <li>Corrélations identifiées avec la fraude :</li>
+              <ul class="list-disc pl-6 mt-2">
+                <li>Ratio au prix d'achat médian (0,46)</li>
+                <li>Distance du domicile (0,19)</li>
+                <li>Commande en ligne (0,19)</li>
+              </ul>
+            </ul>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="fraudDistribution"></canvas>
+          </div>
+        </div>
+        
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Implications pour l'architecture data</strong></p>
+            <ul class="list-disc pl-6">
+              <li>Nécessité d'un traitement en temps réel</li>
+              <li>Besoin d'un modèle de ML performant</li>
+              <li>Importance de la détection d'anomalies</li>
+              <li>Stockage optimisé pour les requêtes fréquentes</li>
+            </ul>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="correlationChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <div class="page-number">2</div>
+    </div>
+    
+    <script>
+      // Graphique de distribution de la fraude
+      const ctxFraud = document.getElementById('fraudDistribution').getContext('2d');
+      const fraudChart = new Chart(ctxFraud, {
+        type: 'bar',
+        data: {
+          labels: ['Non frauduleuse', 'Frauduleuse'],
+          datasets: [{
+            label: 'Nombre de transactions',
+            data: [912597, 87403],
+            backgroundColor: [
+              '#4285F4',
+              '#34A853'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Distribution de la fraude'
+            }
+          }
+        }
+      });
+      
+      // Graphique de corrélation
+      const ctxCorr = document.getElementById('correlationChart').getContext('2d');
+      const corrChart = new Chart(ctxCorr, {
+        type: 'bar',
+        data: {
+          labels: ['Ratio prix médian', 'Distance domicile', 'Commande en ligne', 'Utilisation PIN'],
+          datasets: [{
+            label: 'Corrélation avec la fraude',
+            data: [0.46, 0.19, 0.19, -0.10],
+            backgroundColor: [
+              '#4285F4',
+              '#4285F4',
+              '#4285F4',
+              '#EA4335'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Corrélation avec la fraude'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

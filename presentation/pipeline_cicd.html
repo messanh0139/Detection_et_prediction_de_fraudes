@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .title {
+        color: #1A73E8;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .content {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .page-number {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        color: #666;
+      }
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .pipeline-step {
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
+      .pipeline-step-title {
+        color: #4285F4;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="title">Pipeline CI/CD</div>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Intégration Continue (CI)</strong></p>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">1. Déclencheur</div>
+              <p>Push sur la branche main du dépôt Git</p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">2. Tests et Linting</div>
+              <p>Exécution des tests unitaires et d'intégration</p>
+              <p>Analyse statique du code pour assurer la qualité</p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">3. Entraînement du modèle</div>
+              <p>Exécution du script data_pipeline.py</p>
+              <p>Sauvegarde du modèle comme artefact</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Déploiement Continu (CD)</strong></p>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">1. Déclencheur</div>
+              <p>Succès de la phase d'intégration continue</p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">2. Déploiement du modèle</div>
+              <p>Déploiement sur SageMaker</p>
+              <p>Exposition via une API pour prédictions en temps réel</p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-title">3. Validation</div>
+              <p>Tests de non-régression</p>
+              <p>Surveillance des métriques de performance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="image-container">
+        <img src="/home/ubuntu/upload/search_images/tiyVwXMdnIlw.png" alt="Pipeline CI/CD" style="height: 280px; width: auto;">
+      </div>
+      
+      <div class="page-number">6</div>
+    </div>
+  </body>
+</html>
+

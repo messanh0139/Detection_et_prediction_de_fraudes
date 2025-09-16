@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .title {
+        color: #1A73E8;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .content {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .page-number {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        color: #666;
+      }
+      .test-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      .test-table th {
+        background-color: #4285F4;
+        color: white;
+        padding: 10px;
+        text-align: left;
+      }
+      .test-table td {
+        padding: 8px 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      .test-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .test-category {
+        color: #34A853;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="title">Cahier de recettes et tests</div>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Stratégie de tests</strong></p>
+            
+            <div class="test-category">Tests unitaires</div>
+            <table class="test-table">
+              <tr>
+                <th>Test</th>
+                <th>Résultat attendu</th>
+              </tr>
+              <tr>
+                <td>test_data_loading</td>
+                <td>DataFrame non vide</td>
+              </tr>
+              <tr>
+                <td>test_data_preprocessing</td>
+                <td>Aucune valeur manquante</td>
+              </tr>
+              <tr>
+                <td>test_model_training</td>
+                <td>Modèle de type RandomForestClassifier</td>
+              </tr>
+            </table>
+            
+            <div class="test-category">Tests d'intégration</div>
+            <table class="test-table">
+              <tr>
+                <th>Test</th>
+                <th>Résultat attendu</th>
+              </tr>
+              <tr>
+                <td>test_data_pipeline</td>
+                <td>Modèle sauvegardé dans un fichier</td>
+              </tr>
+              <tr>
+                <td>test_api_prediction</td>
+                <td>Prédiction valide (0 ou 1)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div>
+          <div class="content">
+            <p class="mb-4"><strong>Tests de performance</strong></p>
+            
+            <table class="test-table mb-6">
+              <tr>
+                <th>Test</th>
+                <th>Résultat attendu</th>
+              </tr>
+              <tr>
+                <td>test_prediction_latency</td>
+                <td>Latence < 100 ms</td>
+              </tr>
+              <tr>
+                <td>test_training_time</td>
+                <td>Temps d'entraînement < 10 min</td>
+              </tr>
+            </table>
+            
+            <p class="mb-4"><strong>Métriques de qualité du modèle</strong></p>
+            <div style="height: 300px;">
+              <canvas id="metricsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="page-number">9</div>
+    </div>
+    
+    <script>
+      // Graphique des métriques de qualité du modèle
+      const ctxMetrics = document.getElementById('metricsChart').getContext('2d');
+      const metricsChart = new Chart(ctxMetrics, {
+        type: 'bar',
+        data: {
+          labels: ['Précision', 'Rappel', 'F1-Score', 'Exactitude'],
+          datasets: [{
+            label: 'Métriques du modèle',
+            data: [0.98, 0.97, 0.975, 0.99],
+            backgroundColor: [
+              '#4285F4',
+              '#34A853',
+              '#FBBC05',
+              '#EA4335'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Métriques de performance du modèle'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 1.0
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
